@@ -1,8 +1,6 @@
 import {CONSTANTS, PushAPI} from "@pushprotocol/restapi";
 import {ethers} from "ethers";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 export class NotificationSender {
     constructor() {
@@ -27,12 +25,13 @@ export class NotificationSender {
 
     async sendNotification(listOfRecipients, title, body) {
         try {
-            const response = await this.PushSigner.channel.send(listOfRecipients, {
-                notification: {
-                    title,
-                    body,
-                },
-            });
+            const response = await this.PushSigner.channel.send(
+                listOfRecipients, {
+                    notification: {
+                        title,
+                        body,
+                    },
+                });
 
             console.log("Notification sent:", response);
         } catch (error) {

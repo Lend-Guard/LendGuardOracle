@@ -6,13 +6,13 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "../node_modules/.bin/nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pushprotocol/restapi": "1.4.35",
+    "@pushprotocol/restapi": "^1.4.38",
     "@pushprotocol/socket": "^0.5.2",
     "dotenv": "^16.3.1",
     "ethers": "^5.7.2",

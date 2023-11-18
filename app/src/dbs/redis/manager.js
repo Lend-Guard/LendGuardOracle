@@ -39,12 +39,3 @@ export class RedisService {
         return Boolean(wasCallStatus && parseInt(wasCallStatus));
     }
 }
-
-// const redisService = new RedisService(
-//     'your_redis_host',
-//     1234,
-//     'your_redis_password'
-// );
-//
-// redisService.setWasPushAlertStatus(1);
-// redisService.getWasPushAlertStatus().then(result => console.log('Was call status:', result));
