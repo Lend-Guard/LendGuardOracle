@@ -1,7 +1,7 @@
-const { Web3 } = require('web3');
+import Web3 from 'web3';
 
 
-class Reallocation {
+export class Reallocation {
     constructor() {
         this.web3 = new Web3(process.env.PROVIDER_URL);
     }
@@ -30,5 +30,3 @@ class Reallocation {
         }
     }
 }
-
-module.exports = { Reallocation };

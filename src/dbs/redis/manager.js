@@ -1,6 +1,10 @@
-const { createClient } = require('ioredis');
+import Redis from 'ioredis'
 
-class RedisService {
+const redisSettings = {
+    pushAlertBreakIntervalInSec: 5 * 60,
+};
+
+export class RedisService {
     WAS_PUSH_ALERT_PREFIX = "WAS_PUSH_ALERT_";
 
     constructor(host, port, password = null) {
@@ -10,7 +14,7 @@ class RedisService {
     }
 
     get redis() {
-        return createClient({
+        return Redis.createClient({
             host: this.host,
             port: this.port,
             password: this.password,
@@ -19,9 +23,13 @@ class RedisService {
         });
     }
 
-    setWasPushAlertStatus(walletAddress, wasCallStatus = 1) {
+    async setWasPushAlertStatus(walletAddress, wasCallStatus = 1) {
         const key = `${this.WAS_PUSH_ALERT_PREFIX}${walletAddress}`;
-        this.redis.setex(key, appSettings.pushAlertBreakIntervalInSec, wasCallStatus);
+        await this.redis.setex(
+            key,
+            redisSettings.pushAlertBreakIntervalInSec,
+            wasCallStatus
+        )
     }
 
     async getWasPushAlertStatus(walletAddress) {
@@ -32,11 +40,6 @@ class RedisService {
     }
 }
 
-// Example usage
-// const appSettings = {
-//     pushAlertBreakIntervalInSec: 5 * 60,
-// };
-//
 // const redisService = new RedisService(
 //     'your_redis_host',
 //     1234,
