@@ -2,10 +2,8 @@ const { Web3 } = require('web3');
 
 
 class Reallocation {
-    NODE_URL = '';
-
     constructor() {
-        this.web3 = new Web3(this.NODE_URL);
+        this.web3 = new Web3(process.env.PROVIDER_URL);
     }
 
     async isNotificationRequired() {

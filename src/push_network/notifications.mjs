@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-class NotificationSender {
+export class NotificationSender {
     constructor() {
         this.chainId = process.env.CHANNEL_CHAIN_ID;
         this.privateKey = process.env.CHANNEL_OWNER_PRIVATE_KEY;
@@ -40,13 +40,3 @@ class NotificationSender {
         }
     }
 }
-
-// Example usage:
-// const notificationSender = new NotificationSender();
-//
-// notificationSender.initialize().then(() => {
-//     const recipients = ["0xe5F74aE42cdd911BaD6cDB2b35b857F1E82b313C"];
-//     notificationSender.sendNotification(recipients, "Title", "Body").then(
-//         r => console.log(r)
-//     );
-// });
