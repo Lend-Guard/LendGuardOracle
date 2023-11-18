@@ -8,7 +8,15 @@ class Reallocation {
         this.web3 = new Web3(this.NODE_URL);
     }
 
-    async shouldReallocate() {
+    async isNotificationRequired() {
+        try {
+            return Math.random() < 0.5;
+        } catch (error) {
+            console.error('Error fetching ...:', error);
+        }
+    }
+
+    async isReallocationRequired() {
         try {
             return Math.random() < 0.5;
         } catch (error) {

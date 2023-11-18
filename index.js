@@ -1,8 +1,8 @@
-const {Reallocation} = require("./src/contracts/reallocation");
+const {Reallocation} = require("./src/contracts/reallocation.js");
 
 async function checkAndReallocate() {
     let real = new Reallocation();
-    if (await real.shouldReallocate()) {
+    if (await real.isReallocationRequired()) {
         await real.reallocate();
     }
 }
