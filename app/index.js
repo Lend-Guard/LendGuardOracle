@@ -1,6 +1,6 @@
-import {checkAndReallocate} from "./src/business_logics/general.js";
+import {getVaultsUsersAndGuardThem} from "./src/business_logics/general.js";
 import dotenv from "dotenv";
 
 dotenv.config()
 
-setInterval(checkAndReallocate, 100);
+setInterval(getVaultsUsersAndGuardThem, 100);
